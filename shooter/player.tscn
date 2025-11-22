@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://wlbbv2sssqet"]
+
+[ext_resource type="Script" uid="uid://cg8ajq5rw4jg4" path="res://shooter/player.gd" id="1_pay3c"]
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_pay3c")

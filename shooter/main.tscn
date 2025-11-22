@@ -1,13 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bc5tqs0sfsdt6"]
+[gd_scene load_steps=11 format=3 uid="uid://bc5tqs0sfsdt6"]
 
-[ext_resource type="Script" uid="uid://c1m13rc8w7ryt" path="res://addons/gevp/scripts/vehicle_controllergd.gd" id="1_h2yge"]
-[ext_resource type="Script" uid="uid://dqfooku0j3kby" path="res://addons/gevp/scripts/gui.gd" id="1_lquwl"]
-[ext_resource type="PackedScene" uid="uid://cqfp6bqy07b73" path="res://motorcycle.tscn" id="2_1bvp3"]
-[ext_resource type="Material" uid="uid://yd0j8x83n7rq" path="res://prototype_texture.tres" id="2_272bh"]
-[ext_resource type="Material" uid="uid://da8rkud3mdk1u" path="res://prototype_texture_obj.tres" id="3_5vw27"]
-[ext_resource type="Script" uid="uid://dphaxc64mc3ew" path="res://addons/gevp/scripts/camera.gd" id="3_lquwl"]
-[ext_resource type="Shader" uid="uid://c3horkm8lem2e" path="res://retro.gdshader" id="6_272bh"]
-[ext_resource type="Texture2D" uid="uid://cqchqnn5yq2rf" path="res://icon.svg" id="7_5vw27"]
+[ext_resource type="Script" uid="uid://dqfooku0j3kby" path="res://addons/gevp/scripts/gui.gd" id="1_j2p0n"]
+[ext_resource type="Material" uid="uid://yd0j8x83n7rq" path="res://prototype_texture.tres" id="2_kcb7r"]
+[ext_resource type="Material" uid="uid://da8rkud3mdk1u" path="res://prototype_texture_obj.tres" id="3_s18fw"]
+[ext_resource type="PackedScene" uid="uid://dbx6tpp7lsuqw" path="res://shooter/vechicle_controller.tscn" id="4_jav5u"]
+[ext_resource type="Shader" uid="uid://c3horkm8lem2e" path="res://retro.gdshader" id="7_8s6me"]
+[ext_resource type="Texture2D" uid="uid://cqchqnn5yq2rf" path="res://icon.svg" id="8_0gq53"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2yge"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -23,13 +21,13 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kek77"]
-shader = ExtResource("6_272bh")
+shader = ExtResource("7_8s6me")
 shader_parameter/shake = 0.015
 shader_parameter/noiseQuality = 250.0
 shader_parameter/noiseIntensity = 0.001
 shader_parameter/offsetIntensity = 0.001
 shader_parameter/colorOffsetIntensity = 0.1
-shader_parameter/pixelSize = 250.0
+shader_parameter/pixelSize = 1002.55
 shader_parameter/grainIntensity = 0.01
 shader_parameter/lens_distortion_strength = 0.001
 shader_parameter/shaking = false
@@ -53,8 +51,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_lquwl")
-vehicle = NodePath("../VechicleController/motorcycle")
+script = ExtResource("1_j2p0n")
+vehicle = NodePath("../VehicleController/motorcycle")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUI"]
 layout_mode = 1
@@ -79,229 +77,229 @@ metadata/_edit_lock_ = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
 size = Vector3(300, 0.01, 300)
-material = ExtResource("2_272bh")
+material = ExtResource("2_kcb7r")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.50573, -0.311011, -9.00669)
 polygon = PackedVector2Array(0, 0, 0, 1, 1, 1, 3, 0)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00360584, -15.8143)
 size = Vector3(1, 1.37195, 13.7942)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.127604, -0.167497, -25.4174)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGSphere3D4" type="CSGSphere3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.146, -0.416448, -8.12132)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGSphere3D5" type="CSGSphere3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4305, -0.28231, -10.8691)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGSphere3D6" type="CSGSphere3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2737, -0.321208, -8.61591)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGSphere3D7" type="CSGSphere3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0405, -0.321208, -11.1658)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGSphere3D8" type="CSGSphere3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1969, -0.321208, -13.6195)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGSphere3D9" type="CSGSphere3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6159, -0.321208, -11.4919)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGSphere3D10" type="CSGSphere3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.86661, -0.321208, -7.89267)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGSphere3D11" type="CSGSphere3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4876, -0.321208, -15.1716)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGSphere3D12" type="CSGSphere3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4876, -0.321208, -15.1716)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGSphere3D13" type="CSGSphere3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9861, -0.321208, -14.2423)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGSphere3D14" type="CSGSphere3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2706, -0.321208, -16.9901)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGSphere3D15" type="CSGSphere3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1138, -0.321208, -14.7369)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGSphere3D16" type="CSGSphere3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8806, -0.321208, -17.2868)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGSphere3D17" type="CSGSphere3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0371, -0.321208, -19.7404)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGSphere3D18" type="CSGSphere3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.456, -0.321208, -17.6129)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGSphere3D19" type="CSGSphere3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.70671, -0.321208, -14.0136)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGSphere3D20" type="CSGSphere3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3277, -0.321208, -21.2925)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGSphere3D21" type="CSGSphere3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3277, -0.28231, -21.2925)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.127604, -0.167497, -28.3558)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGSphere3D3" type="CSGSphere3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.127604, -0.167497, -31.2017)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.03281, -0.343773, 0)
 size = Vector3(4.70605, 0.886841, 1)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(-0.69321, -0.000985608, -0.720735, 0.329208, 0.889153, -0.317851, 0.641157, -0.457609, -0.616045, 16.9666, -0.622234, 8.74027)
 size = Vector3(2.87646, 1.91397, 5.48315)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.55185, 0, 0.833944, 0, 1, 0, -0.833944, 0, 0.55185, 9.1105, -0.304985, 6.17679)
 size = Vector3(2.87646, 0.964417, 2.59912)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(-0.0502965, -0.10235, 0.993476, 4.65661e-10, 0.994735, 0.10248, -0.998734, 0.00515439, -0.0500317, 14.1381, -0.304985, -1.99093)
 size = Vector3(3.70862, 0.964417, 3.67834)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -3.70127, -0.279042, 0)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -4.56112, -0.279042, 0)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -5.43519, -0.279042, 0)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -6.39498, -0.279042, 0)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D5" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -7.31328, -0.279042, 0)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D6" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -8.17312, -0.279042, 0)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D7" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -9.04719, -0.279042, 0)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D8" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -10.007, -0.279042, 0)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D9" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -10.8782, -0.279042, 0)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D10" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -11.738, -0.279042, 0)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D11" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -12.6121, -0.279042, 0)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D12" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -13.5719, -0.279042, 0)
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D13" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -3.70127, -0.309135, 2.81036)
 radius = 0.4
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D14" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -4.56112, -0.309135, 2.81036)
 radius = 0.4
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D15" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -5.43519, -0.309135, 2.81036)
 radius = 0.4
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D16" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -6.39498, -0.309135, 2.81036)
 radius = 0.4
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D17" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -7.31328, -0.309135, 2.81036)
 radius = 0.4
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D18" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -8.17312, -0.309135, 2.81036)
 radius = 0.4
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D19" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -9.04719, -0.309135, 2.81036)
 radius = 0.4
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D20" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -10.007, -0.309135, 2.81036)
 radius = 0.4
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D21" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -10.8782, -0.309135, 2.81036)
 radius = 0.4
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D22" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -11.738, -0.309135, 2.81036)
 radius = 0.4
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D23" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -12.6121, -0.309135, 2.81036)
 radius = 0.4
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGCylinder3D24" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0285149, -0.999593, 0, 0.999593, -0.0285149, -13.5719, -0.309135, 2.81036)
 radius = 0.4
-material = ExtResource("3_5vw27")
+material = ExtResource("3_s18fw")
 
 [node name="CSGTorus3D" type="CSGTorus3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.801547, -0.241397, 0.547037, 0.490246, -0.258448, -0.832384, 0.342315, 0.935378, -0.0888146, 0, 10.3505, 0)
@@ -309,29 +307,6 @@ inner_radius = 12.0
 outer_radius = 14.0
 sides = 32
 ring_sides = 32
-
-[node name="VechicleController" type="Node3D" parent="." node_paths=PackedStringArray("vehicle_node")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2711, 0)
-script = ExtResource("1_h2yge")
-vehicle_node = NodePath("motorcycle")
-
-[node name="motorcycle" parent="VechicleController" instance=ExtResource("2_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.136788, 0)
-
-[node name="Node3D" type="Node3D" parent="VechicleController/motorcycle/manubrio/Headlight" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3419e-15, 2.44945, 5.85493)
-
-[node name="Node3D" type="Node3D" parent="VechicleController/motorcycle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00061, -1.59423)
-
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("follow_this")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.94594, 2.94581)
-script = ExtResource("3_lquwl")
-follow_distance = 1.1
-follow_height = 0.7
-speed = 50.0
-follow_this = NodePath("../VechicleController/motorcycle/Node3D")
-rot_offset = Vector3(0, 5, 5)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -344,7 +319,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource("7_5vw27")
+texture = ExtResource("8_0gq53")
 expand_mode = 1
 
-[editable path="VechicleController/motorcycle"]
+[node name="VehicleController" parent="." instance=ExtResource("4_jav5u")]
+
+[editable path="VehicleController"]

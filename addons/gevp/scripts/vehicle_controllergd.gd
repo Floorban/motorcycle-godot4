@@ -1,6 +1,8 @@
 extends Node3D
+class_name VehicleController
 
 @export var vehicle_node : Vehicle
+@onready var camera_anchor: Marker3D = %CameraAnchor
 
 func _physics_process(delta):
 	vehicle_node.brake_input = Input.get_action_strength("Brakes")

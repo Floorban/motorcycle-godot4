@@ -390,7 +390,7 @@ var vehicle_inertia : Vector3
 var current_gravity : Vector3
 
 @export var jump_force := 5000.0
-@export var jump_cooldown := 0.3
+@export var jump_cooldown := 0.8
 var _can_jump := true
 @export var ground_ray_length := 10.0
 
@@ -434,7 +434,7 @@ func _integrate_forces(state : PhysicsDirectBodyState3D):
 	
 	if Input.is_action_just_pressed("ui_up") and _can_jump:
 		if is_vehicle_on_ground():
-			apply_central_impulse(Vector3.UP * jump_force)
+			apply_central_impulse((Vector3.UP + Vector3.FORWARD) * jump_force)
 			_can_jump = false
 			call_deferred("_reset_jump")
 
