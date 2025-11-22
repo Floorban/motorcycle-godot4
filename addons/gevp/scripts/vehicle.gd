@@ -389,6 +389,11 @@ var delta_time := 0.0
 var vehicle_inertia : Vector3
 var current_gravity : Vector3
 
+@export var jump_force := 5000.0
+@export var jump_cooldown := 0.3
+var _can_jump := true
+@export var ground_ray_length := 10.0
+
 class Axle:
 	var wheels : Array[Wheel] = []
 	var is_drive_axle := false
@@ -426,6 +431,30 @@ func _ready():
 
 func _integrate_forces(state : PhysicsDirectBodyState3D):
 	current_gravity = state.total_gravity
+	
+	if Input.is_action_just_pressed("ui_up") and _can_jump:
+		if is_vehicle_on_ground():
+			apply_central_impulse(Vector3.UP * jump_force)
+			_can_jump = false
+			call_deferred("_reset_jump")
+
+func _reset_jump():
+	await get_tree().create_timer(jump_cooldown).timeout
+	_can_jump = true
+
+func is_vehicle_on_ground() -> bool:
+	var from_pos = global_transform.origin
+	var to_pos = from_pos - Vector3.UP * ground_ray_length
+
+	var space_state = get_world_3d().direct_space_state
+
+	var ray_params = PhysicsRayQueryParameters3D.new()
+	ray_params.from = from_pos
+	ray_params.to = to_pos
+	ray_params.exclude = [self]
+
+	var result = space_state.intersect_ray(ray_params)
+	return result != null
 
 func initialize():
 	# Check to verify that surface types are provided
