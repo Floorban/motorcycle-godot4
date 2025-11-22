@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bc5tqs0sfsdt6"]
+[gd_scene load_steps=13 format=3 uid="uid://bc5tqs0sfsdt6"]
 
 [ext_resource type="Texture2D" uid="uid://dreknc4ldkl3d" path="res://prototype_texture.png" id="1_1bvp3"]
-[ext_resource type="Script" path="res://addons/gevp/scripts/vehicle_controllergd.gd" id="1_h2yge"]
-[ext_resource type="Script" path="res://addons/gevp/scripts/gui.gd" id="1_lquwl"]
+[ext_resource type="Script" uid="uid://c1m13rc8w7ryt" path="res://addons/gevp/scripts/vehicle_controllergd.gd" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://dqfooku0j3kby" path="res://addons/gevp/scripts/gui.gd" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://cqfp6bqy07b73" path="res://motorcycle.tscn" id="2_1bvp3"]
-[ext_resource type="Script" path="res://addons/gevp/scripts/camera.gd" id="3_lquwl"]
+[ext_resource type="Script" uid="uid://dphaxc64mc3ew" path="res://addons/gevp/scripts/camera.gd" id="3_lquwl"]
+[ext_resource type="Shader" uid="uid://c3horkm8lem2e" path="res://retro.gdshader" id="6_272bh"]
+[ext_resource type="Texture2D" uid="uid://cqchqnn5yq2rf" path="res://icon.svg" id="7_5vw27"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2yge"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -24,6 +26,21 @@ albedo_color = Color(0.843184, 0.843184, 0.843184, 1)
 albedo_texture = ExtResource("1_1bvp3")
 uv1_triplanar = true
 uv2_triplanar = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kek77"]
+shader = ExtResource("6_272bh")
+shader_parameter/shake = 0.015
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.001
+shader_parameter/colorOffsetIntensity = 0.1
+shader_parameter/pixelSize = 250.0
+shader_parameter/grainIntensity = 0.01
+shader_parameter/lens_distortion_strength = 0.001
+shader_parameter/shaking = false
+shader_parameter/amplitude = 1.0
+shader_parameter/noise_scale = 20.0
+shader_parameter/noise_speed = 20.0
 
 [node name="Node3D" type="Node3D"]
 
@@ -70,14 +87,37 @@ size = Vector3(300, 0.01, 300)
 material = SubResource("StandardMaterial3D_7dm0k")
 
 [node name="VechicleController" type="Node3D" parent="." node_paths=PackedStringArray("vehicle_node")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2711, 0)
 script = ExtResource("1_h2yge")
 vehicle_node = NodePath("motorcycle")
 
 [node name="motorcycle" parent="VechicleController" instance=ExtResource("2_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.136788, 0)
 
+[node name="Node3D" type="Node3D" parent="VechicleController/motorcycle/manubrio/Headlight" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3419e-15, 2.44945, 5.85493)
+
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("follow_this")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.94594, 2.94581)
 script = ExtResource("3_lquwl")
-follow_distance = 3
-follow_this = NodePath("../VechicleController/motorcycle")
+follow_distance = 1.1
+follow_height = 0.7
+speed = 50.0
+follow_this = NodePath("../VechicleController/motorcycle/manubrio/Headlight/Node3D")
+rot_offset = Vector3(10, 0, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_kek77")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("7_5vw27")
+expand_mode = 1
+
+[editable path="VechicleController/motorcycle"]

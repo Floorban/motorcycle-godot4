@@ -2,15 +2,16 @@ extends Camera3D
 
 ## The distance, in meters, that the camera will be from the
 ## [Node3D] in [member follow_this].
-@export var follow_distance = 5
+@export var follow_distance := 5.0
 ## The height, in meters, that the camera will be from the
 ## [Node3D] in [member follow_this].
-@export var follow_height = 2
+@export var follow_height := 2.0
 ## The speed, in meters per second, that the camera will
 ## move to reach the [Node3D] in [member follow_this].
 @export var speed:=20.0
 ## The [Node3D] that the camera will follow.
 @export var follow_this : Node3D
+@export var rot_offset : Vector3
 
 var start_rotation : Vector3
 var start_position : Vector3
@@ -28,3 +29,4 @@ func _process(delta):
 		global_position = follow_this.global_transform.origin + delta_v
 	
 	look_at(follow_this.global_transform.origin, Vector3.UP)
+	rotation_degrees += rot_offset
